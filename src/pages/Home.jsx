@@ -1,11 +1,15 @@
 import SliderArea from '../components/SliderArea.jsx'
+import PromoArea from '../components/PromoArea.jsx'
+import Menu from '../components/Menu.jsx'
+
+
 function Home(){
     return (
         <>
-            <h1>Bienvenue sur la page d'accueil</h1>
-            <p>Contenu de la page d'accueil</p>
-          
             <SliderArea/>
+            <Menu/>
+            <PromoArea/>
+            
 
         </>
     )

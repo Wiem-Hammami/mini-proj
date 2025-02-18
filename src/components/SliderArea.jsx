@@ -2,8 +2,16 @@ import '../assets/css/style.css' ;
 import '../assets/css/responsive.css';
 import '../assets/css/font-awesome.min.css';
 import '../assets/css/bootstrap.min.css';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
+import slide1 from '../assets/img/h4-slide.png'
+import slide2 from '../assets/img/h4-slide2.png'
+import slide3 from '../assets/img/h4-slide3.png'
+
 function SliderArea(){
     return(
+
         <div className="slider-area">
         <div className="block-slider block-slider4">
    
@@ -11,13 +19,13 @@ function SliderArea(){
   <div id="carouselExampleControls" className="carousel slide" data-ride="carousel">
     <div className="carousel-inner">
       <div className="carousel-item active">
-        <img className="d-block w-100" src="../assets/img/h4-slide.png" alt="First slide"/>
+        <img className="d-block w-100" src={slide1} alt="First slide"/>
       </div>
       <div className="carousel-item">
-        <img className="d-block w-100" src="../assets/img/h4-slide2.png" alt="Second slide"/>
+        <img className="d-block w-100" src={slide2} alt="Second Slide"/>
       </div>
       <div className="carousel-item">
-        <img className="d-block w-100" src="../assets/img/h4-slide3.png" alt="Third slide"/>
+        <img className="d-block w-100" src={slide3}alt="Third Slide"/>
       </div>
     </div>
       <a className="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -31,6 +39,9 @@ function SliderArea(){
   </div>
         </div>
       </div>
+
+
+
     );
     
 }

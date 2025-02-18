@@ -7,8 +7,7 @@ import logo from '../assets/img/logo.png';
 function Header(){
     
     return (
-       
-  <>
+    
    <div className="site-branding-area">
               <div className="container">
              <div className="row">
@@ -32,24 +31,8 @@ function Header(){
     </div>
 </div>
 
-<div className="mainmenu-area">
-<div className="container">
-    <div className="row">
-        <div className="navbar">
-            <ul className="nav navbar-nav navbar-expand">
-                <li className="active">Home</li>
-                <li>Samsung</li>
-                <li>Apple</li>
-                <li>LG</li>
-                <li>Sony</li>
-                <li>Huawei</li>
-            </ul>
-        </div>  
-    </div>
-</div>
-</div> 
-      
-      </>
+
+
 );
 }
 
