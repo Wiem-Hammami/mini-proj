@@ -1,9 +1,8 @@
 
-import '../assets/css/style.css' ;
-import '../assets/css/responsive.css';
-import '../assets/css/font-awesome.min.css';
-import '../assets/css/bootstrap.min.css';
+
 import logo from '../assets/img/logo.png';
+import { Link } from 'react-router-dom'; 
+
 function Header(){
     
     return (
@@ -12,9 +11,11 @@ function Header(){
               <div className="container">
              <div className="row">
             <div className="col-sm-4">
-                <div className="logo" style={{ width: "150px", height: "150px"}}>
-                     <h1><img src={logo} /></h1>
-                </div>
+            <div className="logo" style={{ width: "150px", height: "150px"}}>
+  <Link to="/"> 
+    <img src={logo} alt="Logo" style={{ width: "100%", height: "100%" }} /> 
+  </Link>
+</div>
             </div>
                <div className="col-sm-4">
                         <input type="text" style={{marginTop: "30px"}} placeholder="Search products..."/>

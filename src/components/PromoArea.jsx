@@ -1,14 +1,12 @@
-import '../assets/css/style.css' ;
-import '../assets/css/responsive.css';
-import '../assets/css/font-awesome.min.css';
-import '../assets/css/bootstrap.min.css';
+
+import '../assets/css/font-awesome.min.css'
 function PromoArea(){
     return (
         <div className="promo-area">
 <div className="zigzag-bottom"></div>
 <div className="container">
   <div className="row">
-    <div className="col-md-3 col-sm-6">
+    <div className="col-md-3 col-sm-6"> 
       <div className="single-promo promo1">
         <i className="fa fa-refresh"></i>
         <p>30 Days return</p>

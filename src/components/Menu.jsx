@@ -1,26 +1,29 @@
-import '../assets/css/style.css' ;
-import '../assets/css/responsive.css';
-import '../assets/css/font-awesome.min.css';
-import '../assets/css/bootstrap.min.css';
-function Menu(){
-    return (
-        <div className="mainmenu-area">
-<div className="container">
-    <div className="row">
-        <div className="navbar">
+
+import { Link } from 'react-router-dom';
+
+function Menu() {
+  const categories = ["Samsung", "Apple", "LG", "Sony", "Huawei"]; 
+
+  return (
+    <div className="mainmenu-area">
+      <div className="container">
+        <div className="row">
+          <div className="navbar">
             <ul className="nav navbar-nav navbar-expand">
-                <li className="active">Home</li>
-                <li>Samsung</li>
-                <li>Apple</li>
-                <li>LG</li>
-                <li>Sony</li>
-                <li>Huawei</li>
+              <li className="active">
+                <Link to="/">Home</Link>
+              </li>
+              {categories.map((category) => (
+                <li key={category}>
+                  <Link to={`/categories/${category}`}>{category}</Link>
+                </li>
+              ))}
             </ul>
-        </div>  
+          </div>
+        </div>
+      </div>
     </div>
-</div>
-</div> 
-      
-    )
+  );
 }
+
 export default Menu;

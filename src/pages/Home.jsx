@@ -1,14 +1,17 @@
 import SliderArea from '../components/SliderArea.jsx'
 import PromoArea from '../components/PromoArea.jsx'
-import Menu from '../components/Menu.jsx'
+import BrandsArea from '../components/BrandsArea.jsx';
+import ProductsArea from '../components/ProductsArea.jsx';
 
 
 function Home(){
     return (
         <>
+            
             <SliderArea/>
-            <Menu/>
             <PromoArea/>
+            <BrandsArea/>
+            <ProductsArea/>
             
 
         </>
