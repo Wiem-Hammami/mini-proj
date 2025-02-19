@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:3000/products-lists";
+const API_URL = "http://localhost:3000/categories";
 
 export const getCategories = async () => {
   try {
@@ -12,3 +12,4 @@ export const getCategories = async () => {
     return [];
   }
 };
+ 

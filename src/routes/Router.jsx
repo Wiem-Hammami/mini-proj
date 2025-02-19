@@ -3,6 +3,7 @@ import App from "../App";
 import Home from "../pages/Home";
 import CategoryProducts from "../pages/CategoryProducts";
 import FicheProduit from "../pages/FicheProduit";
+import Cart from "../pages/Cart.jsx";
 
 
 const router = createBrowserRouter([
@@ -13,8 +14,11 @@ const router = createBrowserRouter([
       { index: true, element: <Home /> },
       { path: "categories/:categoryName", element: <CategoryProducts /> },
       { path: "categories/:categoryName/ProductDetails/:productId", element: <FicheProduit /> },
+      { path: "cart", element: <Cart /> },
+
     ],
   },
 ]);
 
 export default router;
+ 

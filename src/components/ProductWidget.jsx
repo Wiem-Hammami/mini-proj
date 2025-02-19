@@ -49,7 +49,7 @@ function ProductWidget({ title }) {
             return (
               <Link  to={`/categories/${category}/ProductDetails/${product.id}`}>
               <ProductItem 
-                key={product.id}
+                key={product.id} 
                 image={`/img/produts-img/${category}/${product.imageName}`}  
                 name={product.name} 
                 

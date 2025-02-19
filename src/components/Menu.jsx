@@ -4,12 +4,13 @@ import { getCategories } from '../services/CategoriesService';
 
 function Menu() {
   const [categories, setCategories] = useState([]);
+  const fetchCategories = async () => {
+    const categoryNames = await getCategories();
+    setCategories(categoryNames);
+};
 
   useEffect(() => {
-      const fetchCategories = async () => {
-          const categoryNames = await getCategories();
-          setCategories(categoryNames);
-      };
+     
 
       fetchCategories();
   }, []);
@@ -28,16 +29,7 @@ function Menu() {
                   Home
                 </NavLink>
               </li>
-              {/* {categories.map((category) => (
-                <li key={category}>
-                  <NavLink 
-                    to={`/categories/${category}`} 
-                    className={({ isActive }) => (isActive ? "active" : "")}
-                  >
-                    {category}
-                  </NavLink>
-                </li>
-              ))} */}
+             
               {categories.length > 0 ? (
                         categories.map((category) => (
                             <li key={category}>

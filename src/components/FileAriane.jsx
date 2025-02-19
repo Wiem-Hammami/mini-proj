@@ -1,10 +1,13 @@
-function FileAriane(){
+import { NavLink } from "react-router-dom";
+function FileAriane({categoryName , product}){
     return (
         <div className="product-breadcroumb">
-        <a href="">Home</a>
-        <a href="">Category Name</a>
-        <a href="">Sony Smart TV - 2015</a>
+        <NavLink to="/">
+                  Home
+                </NavLink>
+        <NavLink to={`/categories/${categoryName}`}>{categoryName}</NavLink>
+        <NavLink to={`/categories/${categoryName}/ProductDetails/${product.id}`}>{product.name}</NavLink>
       </div>
     )
 }
-export default FileAriane;
+export default FileAriane; 

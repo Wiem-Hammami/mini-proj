@@ -11,8 +11,7 @@ const Footer = () => {
         <div className="row">
          <FooterAboutUs/>
          <FooterMenu/>
-         <FooterNewsLetter/>
-
+         <FooterNewsLetter/> 
           
         </div>
       </div>

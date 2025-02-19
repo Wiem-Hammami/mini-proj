@@ -34,7 +34,7 @@ function CategoryProducts() {
         </div>
       </div>
 
-      <div className="single-product-area">
+      <div className="single-product-area"> 
         <div className="container">
           <div className="row">
             {products.map(product => (

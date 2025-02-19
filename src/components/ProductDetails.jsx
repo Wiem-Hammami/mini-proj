@@ -9,7 +9,7 @@ function ProductDetails({ product }) {
     return (
         <div className="col-md-8">
             <div className="product-content-right">
-                <FileAriane />
+                <FileAriane product={product} categoryName={category} />
                 <div className="row">
                     <div className="col-sm-6">
                         <div className="product-images">
@@ -17,7 +17,7 @@ function ProductDetails({ product }) {
                                 
                                 <img src={`/img/produts-img/${category}/${product.imageName}`}   alt={product.name} />
                             </div>
-                            <div class="product-gallery">
+                            <div className="product-gallery">
                                         <img src="/img/product-thumb-1.jpg" alt=""/>
                                         <img src="/img/product-thumb-2.jpg" alt=""/>
                                         <img src="/img/product-thumb-3.jpg" alt=""/>

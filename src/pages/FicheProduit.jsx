@@ -8,7 +8,7 @@ import OtherBrands from "../components/OtherBrands";
 
 function FicheProduit() {
     const { productId } = useParams();
-    const [product, setProduct] = useState(null); // null au lieu de []
+    const [product, setProduct] = useState(null); 
 
     useEffect(() => {
         const fetchProduct = async () => {
