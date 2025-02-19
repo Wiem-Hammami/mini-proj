@@ -47,9 +47,9 @@ function ProductWidget({ title }) {
             const category = getCategoryFromImage(product.imageName); 
 
             return (
-              <Link  to={`/categories/${category}/ProductDetails/${product.id}`}>
+              <Link  to={`/categories/${category}/ProductDetails/${product.id}`} key={product.id}>
               <ProductItem 
-                key={product.id} 
+                 
                 image={`/img/produts-img/${category}/${product.imageName}`}  
                 name={product.name} 
                 

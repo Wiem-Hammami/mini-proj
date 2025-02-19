@@ -5,6 +5,7 @@ import ProductItem from "../components/ProductItem";
 import { getProductsByCategory } from "../services/ProductService.jsx"; 
 import Pagination from "../components/Pagination.jsx";
 import { Link } from "react-router-dom";
+import ShopProduct from "../components/ShopProduct.jsx";
 
 function CategoryProducts() {
   const { categoryName } = useParams();
@@ -39,15 +40,15 @@ function CategoryProducts() {
           <div className="row">
             {products.map(product => (
               <div key={product.id} className="col-md-3 col-sm-6">
-                <Link  to={`/categories/${categoryName}/ProductDetails/${product.id}`}>
-                <ProductItem
+                
+                <ShopProduct
                   image={`/img/produts-img/${categoryName}/${product.imageName}`}
                   name={product.name}
-                  
-                  rating={product.review || 0}
+                  category={categoryName}
+                  id={product.id}
                   price={product.price}
                   oldPrice={product.discountRate ? (product.price * (1 - product.discountRate / 100)).toFixed(2) : null}
-                /></Link>
+                />
                
               </div>
             ))}

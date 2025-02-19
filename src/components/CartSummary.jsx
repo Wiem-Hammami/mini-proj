@@ -1,10 +1,7 @@
-import CrossSellers from "./CrossSellers";
 
 function CartSummary(){
     return( 
-        <div className="cart-collaterals">
-   
-    <CrossSellers/>
+       
     <div className="cart_totals ">
       <h2>Cart Totals</h2>
       <table cellSpacing={0}>
@@ -30,7 +27,7 @@ function CartSummary(){
         </tbody>
       </table>
     </div>
-  </div>
+ 
     )
 }
 export default CartSummary;
