@@ -2,6 +2,7 @@ function ProductItem({ image, name, rating, price, oldPrice }) {
     return (
       <div className="single-wid-product">
         
+        
           <img src={image} alt={name} className="product-thumb" />
        
         <h2>

@@ -6,9 +6,10 @@ function ProductsArea(){
         <div className="zigzag-bottom" />
         <div className="container">
           <div className="row">
-            <ProductWidget title="Top Sellers" />
-            <ProductWidget title="Recently Viewed" />
-            <ProductWidget title="Top New" />
+            <ProductWidget title="Top Sellers" showViewAllButton={true} />
+            <ProductWidget title="Recently Viewed" showViewAllButton={true} />
+            <ProductWidget title="Top New" showViewAllButton={true} />
+
           </div>
         </div>
       </div>

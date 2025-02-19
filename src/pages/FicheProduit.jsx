@@ -1,14 +1,14 @@
 
-
 import { getProductById } from "../services/ProductService";
 import ProductDetails from "../components/ProductDetails";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import OtherBrands from "../components/OtherBrands";
+import Cookies from "js-cookie"; 
+import ProductWidget from "../components/ProductWidget";
 
 function FicheProduit() {
     const { productId } = useParams();
-    const [product, setProduct] = useState(null); 
+    const [product, setProduct] = useState(null);
 
     useEffect(() => {
         const fetchProduct = async () => {
@@ -17,95 +17,56 @@ function FicheProduit() {
         };
 
         fetchProduct();
+
+        let viewedProducts = Cookies.get("recentlyViewed");
+        viewedProducts = viewedProducts ? JSON.parse(viewedProducts) : [];
+
+        if (!viewedProducts.includes(productId)) {
+            viewedProducts.push(productId);
+            if (viewedProducts.length > 5) {
+                viewedProducts.shift(); 
+            }
+            Cookies.set("recentlyViewed", JSON.stringify(viewedProducts), { expires: 7 });
+        }
     }, [productId]);
 
     if (!product) {
-        return <p>Loading product...</p>; 
+        return <p>Loading product...</p>;
     }
 
     return (
-        <div className="single-product-area">
-            <div className="zigzag-bottom" />
-            <div className="container">
-                <div className="row">
-                <div className="col-md-4">
-         <div className="single-sidebar">
-           <h2 className="sidebar-title">Recently Viewed</h2>
-           <div className="thubmnail-recent">
-             <img
-              src="img/product-thumb-1.jpg"
-              className="recent-thumb"
-              alt=""
-            />
-            <h2>
-              <a href="">Sony Smart TV - 2015</a>
-            </h2>
-            <div className="product-sidebar-price">
-              <ins>700.00 € </ins> <del>100.00 €</del>
-            </div>
+      <div className="single-product-area">
+      <div className="zigzag-bottom" />
+      <div className="container">
+          <div className="row">
+          <div className="col-md-4">
+   <div className="single-sidebar">
+     <h2 className="sidebar-title">Recently Viewed</h2>
+   
+<ProductWidget title="Recently Viewed" showViewAllButton={false} showTitle={false}/>
+</div>
+  <div className="single-sidebar">
+    <h2 className="sidebar-title">Others brands</h2>
+    <ul>
+      <li>
+        <a href="">Sony</a>
+      </li>
+      <li>
+        <a href="">Samsung</a>
+      </li>
+      <li>
+        <a href="">LG</a>
+      </li>
+    </ul>
+  </div>
+  {/* <OtherBrands/> */}
+</div>
+              
+             
+              <ProductDetails product={product} />
           </div>
-          <div className="thubmnail-recent">
-            <img
-              src="img/product-thumb-1.jpg"
-              className="recent-thumb"
-              alt=""
-            />
-            <h2>
-              <a href="">Sony Smart TV - 2015</a>
-            </h2>
-            <div className="product-sidebar-price">
-              <ins>$700.00</ins> <del>$100.00</del>
-            </div>
-          </div>
-          <div className="thubmnail-recent">
-            <img
-              src="img/product-thumb-1.jpg"
-              className="recent-thumb"
-              alt=""
-            />
-            <h2>
-              <a href="">Sony Smart TV - 2015</a>
-            </h2>
-            <div className="product-sidebar-price">
-              <ins>$700.00</ins> <del>$100.00</del>
-            </div>
-          </div>
-          <div className="thubmnail-recent">
-            <img
-              src="img/product-thumb-1.jpg"
-              className="recent-thumb"
-              alt=""
-            />
-            <h2>
-              <a href="">Sony Smart TV - 2015</a>
-            </h2>
-            <div className="product-sidebar-price">
-              <ins>$700.00</ins> <del>$100.00</del>
-            </div>
-          </div>
-        </div>
-        <div className="single-sidebar">
-          <h2 className="sidebar-title">Others brands</h2>
-          <ul>
-            <li>
-              <a href="">Sony</a>
-            </li>
-            <li>
-              <a href="">Samsung</a>
-            </li>
-            <li>
-              <a href="">LG</a>
-            </li>
-          </ul>
-        </div>
-        {/* <OtherBrands/> */}
       </div>
-                    
-                   
-                    <ProductDetails product={product} />
-                </div>
-            </div>
-        </div>
+  </div>
     );
 }
 
