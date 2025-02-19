@@ -1,8 +1,18 @@
-
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { getCategories } from '../services/CategoriesService'; 
 
 function Menu() {
-  const categories = ["Samsung", "Apple", "LG", "Sony", "Huawei"]; 
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+      const fetchCategories = async () => {
+          const categoryNames = await getCategories();
+          setCategories(categoryNames);
+      };
+
+      fetchCategories();
+  }, []);
 
   return (
     <div className="mainmenu-area">
@@ -10,14 +20,38 @@ function Menu() {
         <div className="row">
           <div className="navbar">
             <ul className="nav navbar-nav navbar-expand">
-              <li className="active">
-                <Link to="/">Home</Link>
+              <li>
+                <NavLink 
+                  to="/" 
+                  className={({ isActive }) => (isActive ? "active" : "")}
+                >
+                  Home
+                </NavLink>
               </li>
-              {categories.map((category) => (
+              {/* {categories.map((category) => (
                 <li key={category}>
-                  <Link to={`/categories/${category}`}>{category}</Link>
+                  <NavLink 
+                    to={`/categories/${category}`} 
+                    className={({ isActive }) => (isActive ? "active" : "")}
+                  >
+                    {category}
+                  </NavLink>
                 </li>
-              ))}
+              ))} */}
+              {categories.length > 0 ? (
+                        categories.map((category) => (
+                            <li key={category}>
+                                <NavLink 
+                    to={`/categories/${category}`} 
+                    className={({ isActive }) => (isActive ? "active" : "")}
+                  >
+                    {category}
+                  </NavLink>
+                            </li>
+                        ))
+                    ) : (
+                        <li>Chargement...</li>
+                    )}
             </ul>
           </div>
         </div>

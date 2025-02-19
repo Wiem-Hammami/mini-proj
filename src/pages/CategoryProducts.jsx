@@ -1,28 +1,26 @@
 
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import ProductItem from '../components/ProductItem'; 
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import ProductItem from "../components/ProductItem";
+import { getProductsByCategory } from "../services/ProductService.jsx"; 
+import Pagination from "../components/Pagination.jsx";
+import { Link } from "react-router-dom";
 
 function CategoryProducts() {
   const { categoryName } = useParams();
   const [products, setProducts] = useState([]);
-  
 
   useEffect(() => {
-    fetch('http://localhost:3000/products-lists')
-      .then(response => response.json())
-      .then(data => {
-        const category = data.find(item => item.name.toLowerCase() === categoryName.toLowerCase());
-        if (category && category.items) {
-          setProducts(category.items); 
-        } else {
-          setProducts([]); 
-        }
-      })
-      .catch(error => console.error('Error fetching products:', error));
+    const fetchProducts = async () => {
+      const productsData = await getProductsByCategory(categoryName);
+      setProducts(productsData);
+    };
+
+    fetchProducts();
   }, [categoryName]);
 
   return (
+  
     <div>
       <div className="product-big-title-area">
         <div className="container">
@@ -37,25 +35,30 @@ function CategoryProducts() {
       </div>
 
       <div className="single-product-area">
-        <div className="zigzag-bottom"></div>
         <div className="container">
           <div className="row">
             {products.map(product => (
               <div key={product.id} className="col-md-3 col-sm-6">
+                <Link  to={`/categories/${categoryName}/ProductDetails/${product.id}`}>
                 <ProductItem
-                  image={product.imageName} 
+                  image={`/img/produts-img/${categoryName}/${product.imageName}`}
                   name={product.name}
-                  link={`product/${product.id}`} 
-                  rating={product.review || 0} 
+                  
+                  rating={product.review || 0}
                   price={product.price}
-                  oldPrice={product.discountRate ? (product.price * (1 - product.discountRate / 100)).toFixed(2) : null} // Calcul du prix ancien si un discount est appliqué
-                />
+                  oldPrice={product.discountRate ? (product.price * (1 - product.discountRate / 100)).toFixed(2) : null}
+                /></Link>
+               
               </div>
             ))}
           </div>
         </div>
       </div>
+      <Pagination/>
     </div>
+
+    
+  
   );
 }
 

@@ -2,9 +2,11 @@
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-import slide1 from '../assets/img/h4-slide.png';
-import slide2 from '../assets/img/h4-slide2.png';
-import slide3 from '../assets/img/h4-slide3.png';
+// import slide1 from 'img/h4-slide.png';
+// import slide2 from 'img/h4-slide2.png';
+// import slide3 from 'img/h4-slide3.png';
+// import slide4 from 'img/h4-slide4.png';
+// import slide7 from 'img/h4-slide7.png';
 
 function SliderArea() {
   return (
@@ -13,13 +15,19 @@ function SliderArea() {
         <div id="carouselExampleControls" className="carousel slide" data-ride="carousel">
           <div className="carousel-inner">
             <div className="carousel-item active">
-              <img className="d-block w-100" src={slide1} alt="First slide" />
+              <img className="d-block w-100" src='img/h4-slide.png' alt="First slide" />
             </div>
             <div className="carousel-item">
-              <img className="d-block w-100" src={slide2} alt="Second Slide" />
+              <img className="d-block w-100" src='img/h4-slide2.png' alt="Second Slide" />
             </div>
             <div className="carousel-item">
-              <img className="d-block w-100" src={slide3} alt="Third Slide" />
+              <img className="d-block w-100" src='img/h4-slide3.png' alt="Third Slide" />
+            </div>
+            <div className="carousel-item">
+              <img className="d-block w-100" src='img/h4-slide4.png' alt="Third Slide" />
+            </div>
+            <div className="carousel-item">
+              <img className="d-block w-100" src='img/h4-slide7.png' alt="Third Slide" />
             </div>
           </div>
           <a className="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">

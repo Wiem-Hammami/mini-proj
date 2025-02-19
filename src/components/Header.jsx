@@ -1,19 +1,18 @@
 
 
-import logo from '../assets/img/logo.png';
 import { Link } from 'react-router-dom'; 
 
 function Header(){
     
     return (
     
-   <div className="site-branding-area">
+   <div className="site-branding-area" style={{Width: "100%"}}>
               <div className="container">
              <div className="row">
             <div className="col-sm-4">
             <div className="logo" style={{ width: "150px", height: "150px"}}>
   <Link to="/"> 
-    <img src={logo} alt="Logo" style={{ width: "100%", height: "100%" }} /> 
+    <img src="img/logo.png" alt="Logo" style={{ width: "100%", height: "100%" }} /> 
   </Link>
 </div>
             </div>
