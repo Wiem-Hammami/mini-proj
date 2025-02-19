@@ -18,9 +18,9 @@ function ProductDetails({ product }) {
                                 <img src={`/img/produts-img/${category}/${product.imageName}`}   alt={product.name} />
                             </div>
                             <div class="product-gallery">
-                                        <img src="img/product-thumb-1.jpg" alt=""/>
-                                        <img src="img/product-thumb-2.jpg" alt=""/>
-                                        <img src="img/product-thumb-3.jpg" alt=""/>
+                                        <img src="/img/product-thumb-1.jpg" alt=""/>
+                                        <img src="/img/product-thumb-2.jpg" alt=""/>
+                                        <img src="/img/product-thumb-3.jpg" alt=""/>
                             </div>
                                 
                         </div>
