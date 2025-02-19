@@ -1,5 +1,5 @@
 
-function CartSummary(){
+function CartTotals(){
     return( 
        
     <div className="cart_totals ">
@@ -30,4 +30,4 @@ function CartSummary(){
  
     )
 }
-export default CartSummary;
+export default CartTotals;

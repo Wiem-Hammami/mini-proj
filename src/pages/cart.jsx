@@ -1,4 +1,4 @@
- import CartSummary from '../components/CartSummary.jsx';
+ import CartTotals from '../components/CartTotals.jsx';
 import CrossSellers from '../components/CrossSellers.jsx';
 import ShopTable from '../components/ShopTable.jsx';
  function Cart(){
@@ -16,7 +16,7 @@ import ShopTable from '../components/ShopTable.jsx';
             <div className="cart-collaterals">
              
               <CrossSellers/>
-              <CartSummary/>
+              <CartTotals/>
               
             </div>
           </div>

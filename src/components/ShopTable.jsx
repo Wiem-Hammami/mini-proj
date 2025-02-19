@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 function ShopTable(){
     return(
         <div>
@@ -56,15 +57,17 @@ function ShopTable(){
                   </td>
                 </tr>
                 <tr>
-                  <td className="actions" colSpan={6}>
-                    <input
-                      type="button"
-                      //onclick="location.href='checkout.html'"
-                      defaultValue="Checkout"
-                      name="proceed"
-                      className="checkout-button button alt wc-forward"
-                    />
-                  </td>
+                <td className="actions" colSpan={6}>
+  <Link to="/checkout">
+    <button 
+      type="button"
+      className="checkout-button button alt wc-forward"
+    >
+      Checkout
+    </button>
+  </Link>
+</td>
+
                 </tr>
               </tbody>
             </table>
