@@ -9,25 +9,30 @@ import ProductWidget from "../components/ProductWidget";
 function FicheProduit() {
     const { productId } = useParams();
     const [product, setProduct] = useState(null);
+    const fetchProduct = async () => {
+      const productData = await getProductById(productId);
+      setProduct(productData);
+  };
+  const cookies = async()=>{
+    let viewedProducts = Cookies.get("recentlyViewed");
+    viewedProducts = viewedProducts ? JSON.parse(viewedProducts) : [];
+
+    if (!viewedProducts.includes(productId)) {
+        viewedProducts.push(productId);
+        if (viewedProducts.length > 5) {
+            viewedProducts.shift(); 
+        }
+        Cookies.set("recentlyViewed", JSON.stringify(viewedProducts), { expires: 7 });
+    }
+  }
 
     useEffect(() => {
-        const fetchProduct = async () => {
-            const productData = await getProductById(productId);
-            setProduct(productData);
-        };
+        
 
         fetchProduct();
+        cookies();
 
-        let viewedProducts = Cookies.get("recentlyViewed");
-        viewedProducts = viewedProducts ? JSON.parse(viewedProducts) : [];
-
-        if (!viewedProducts.includes(productId)) {
-            viewedProducts.push(productId);
-            if (viewedProducts.length > 5) {
-                viewedProducts.shift(); 
-            }
-            Cookies.set("recentlyViewed", JSON.stringify(viewedProducts), { expires: 7 });
-        }
+       
     }, [productId]);
 
     if (!product) {
