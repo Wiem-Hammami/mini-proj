@@ -19,7 +19,7 @@ function ProductWidget({ title }) {
     } else {
       const fetchAllProducts = async () => {
         const fetchedAllProducts = await getAllProducts(title);
-        setProducts(fetchedAllProducts);
+        setProducts(fetchedAllProducts); 
       };
       fetchAllProducts(); 
     }

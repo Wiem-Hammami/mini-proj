@@ -1,3 +1,4 @@
+ import ShopTable from '../components/ShopTable.jsx';
  function Cart(){
     return (
         <div className="single-product-area">
@@ -74,6 +75,8 @@
                 </tr>
               </tbody>
             </table>
+            {/* <ShopTable/> */}
+
             <div className="cart-collaterals">
               <div className="cross-sells">
                 <h2>You may be interested in...</h2>

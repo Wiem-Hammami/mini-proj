@@ -1,6 +1,8 @@
 const API_URL = "http://localhost:3000/products-lists";
 const API_URL_TOP_SELLERS = "http://localhost:3000/top-sellers-products";
 const API_URL_TOP_NEW = "http://localhost:3000/top-new-products";
+const TOP_SELLERS = "Top Sellers";
+const Top_New = "Top New";
 
 export const getProductsByCategory = async (categoryName) => {
   try {
@@ -18,9 +20,9 @@ export const getProductsByCategory = async (categoryName) => {
 export const getProducts = async (title) => {
   try {
     let url;
-    if (title === "Top Sellers") {
+    if (title === TOP_SELLERS) {
       url = API_URL_TOP_SELLERS;
-    } else if (title === "Top New") {
+    } else if (title === Top_New) {
       url = API_URL_TOP_NEW;
     }
 
@@ -41,9 +43,9 @@ export const getProducts = async (title) => {
 export const getAllProducts = async (title) => {
   try {
     let url;
-    if (title === "Top Sellers") {
+    if (title === TOP_SELLERS) {
       url = API_URL_TOP_SELLERS;
-    } else if (title === "Top New") {
+    } else if (title === Top_New) {
       url = API_URL_TOP_NEW;
     }
 
