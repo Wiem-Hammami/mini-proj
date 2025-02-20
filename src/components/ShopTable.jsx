@@ -53,26 +53,36 @@ function ShopTable({ items }) {
                 </td>
                 <td className="product-quantity">
                   <div className="quantity buttons_added">
-                    <button
-                      className="minus"
-                      onClick={() =>
-                        dispatch(updateQuantity({ id: item.id, qty: Math.max(1, item.qty - 1) }))
-                      }
-                    >
-                      -
-                    </button>
-                    <input
-                      type="number"
-                      size={4}
-                      className="input-text qty text"
-                      title="Qty"
-                      value={item.qty}
-                      min={1}
-                      onChange={(e) =>
-                        dispatch(updateQuantity({ id: item.id, qty: Math.max(1, item.qty - 1) }))
+                  <button
+  className="minus"
+  onClick={() => {
+    if (item.qty === 1) {
+      dispatch(removeFromCart(item.id));
+    } else {
+      dispatch(updateQuantity({ id: item.id, qty: item.qty - 1 }));
+    }
+  }}
+>
+  -
+</button>
 
-                      }
-                    />
+<input
+  type="number"
+  size={4}
+  className="input-text qty text"
+  title="Qty"
+  value={item.qty}
+  min={1}
+  onChange={(e) => {
+    const newQty = Number(e.target.value);
+    if (newQty <= 0) {
+      dispatch(removeFromCart(item.id));
+    } else {
+      dispatch(updateQuantity({ id: item.id, qty: newQty }));
+    }
+  }}
+/>
+
                     <button
                       className="plus"
                       onClick={() =>

@@ -13,7 +13,7 @@ function ProductDetails({ product }) {
   const handleAddToCart = async (e) => {
     e.preventDefault();
      dispatch(addToCart(product, 1)); 
-    navigate(`/cart/${cartId}`);
+    navigate(`/cart`); 
    
   };
 

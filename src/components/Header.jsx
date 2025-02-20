@@ -2,8 +2,12 @@
 
 import { Link } from 'react-router-dom'; 
 import CartComponent from './CartComponent';
+import SearchComponent from './SearchComponent';
+import { useLocation } from "react-router-dom";
 
 function Header(){
+  const location = useLocation();
+  const isCheckoutOrCart = location.pathname === "/checkout" || location.pathname === "/cart";
     
     return (
     
@@ -17,10 +21,10 @@ function Header(){
   </Link>
 </div>
             </div>
-               <div className="col-sm-4">
-                        <input type="text" style={{marginTop: "30px"}} placeholder="Search products..."/>
-                        <input type="button" value="Search"/>
-               </div>
+            <div className ="col-sm-4">
+            <SearchComponent isVisible={!isCheckoutOrCart} />
+
+            </div>
             <CartComponent/>
         </div>
     </div>

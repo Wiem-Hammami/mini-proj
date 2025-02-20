@@ -1,8 +1,8 @@
 
- 
-
 import axios from "axios";
 import { createSlice } from "@reduxjs/toolkit";
+
+const API_URL = "http://localhost:3000/carts"; // URL de l'API
 
 const loadCartFromLocalStorage = () => {
   const savedCart = localStorage.getItem("cart");
@@ -33,6 +33,7 @@ const cartSlice = createSlice({
       state.tax = action.payload.tax;
       saveCartToLocalStorage(state);
     },
+
     addItem: (state, action) => {
       const existingItem = state.items.find((item) => item.id === action.payload.id);
       if (existingItem) {
@@ -45,32 +46,47 @@ const cartSlice = createSlice({
       state.total = state.subTotal + state.tax;
       saveCartToLocalStorage(state);
     },
-      removeFromCart: (state, action) => {
+
+    removeFromCart: (state, action) => {
       state.items = state.items.filter(item => item.id !== action.payload);
-      state.subTotal = state.items.reduce((sum, item) => sum + item.price * item.qty, 0);
-      state.tax = state.subTotal * 0.12;
-      state.total = state.subTotal + state.tax;
+
+      if (state.items.length === 0) {
+        state.total = 0;
+        state.subTotal = 0;
+        state.tax = 0;
+      } else {
+        state.subTotal = state.items.reduce((sum, item) => sum + item.price * item.qty, 0);
+        state.tax = state.subTotal * 0.12;
+        state.total = state.subTotal + state.tax;
+      }
+
       saveCartToLocalStorage(state);
     },
-      updateQuantity: (state, action) => {
+
+    updateQuantity: (state, action) => {
       const { id, qty } = action.payload;
       const item = state.items.find(item => item.id === id);
+
       if (item) {
-        item.qty = qty;
+        if (qty === 0) {
+          state.items = state.items.filter(item => item.id !== id);
+        } else {
+          item.qty = qty;
+        }
       }
+
       state.subTotal = state.items.reduce((sum, item) => sum + item.price * item.qty, 0);
       state.tax = state.subTotal * 0.2;
       state.total = state.subTotal + state.tax;
       saveCartToLocalStorage(state);
     },
-    
   },
 });
 
-export const { setCart, addItem ,removeFromCart, updateQuantity} = cartSlice.actions;
+export const { setCart, addItem, removeFromCart, updateQuantity } = cartSlice.actions;
+
 export const addToCart = (product, quantity = 1) => async (dispatch, getState) => {
   const { cart } = getState();
-
   const updatedItem = {
     id: product.id,
     name: product.name,
@@ -87,7 +103,7 @@ export const addToCart = (product, quantity = 1) => async (dispatch, getState) =
     }
 
     try {
-      const response = await axios.post("http://localhost:3000/carts", {
+      const response = await axios.post(API_URL, {
         total: updatedItem.price * updatedItem.qty,
         subTotal: updatedItem.price * updatedItem.qty,
         tax: (updatedItem.price * updatedItem.qty) * 0.12,
@@ -110,46 +126,51 @@ export const addToCart = (product, quantity = 1) => async (dispatch, getState) =
         items: [...cart.items, updatedItem],
       };
 
-      await axios.put(`http://localhost:3000/carts/${cart.cartId}`, updatedCart);
+      await axios.put(`${API_URL}/${cart.cartId}`, updatedCart);
       dispatch(setCart(updatedCart));
     } catch (error) {
       console.error("Erreur lors de la mise à jour du panier :", error);
     }
   }
 };
-
-// ✅ Fonction pour récupérer ou créer un panier et naviguer vers la page du panier
-export const getOrCreateCart = (navigate) => async (dispatch, getState) => {
-  const { cartId } = getState().cart;
-
-  if (cartId) {
-    navigate(`/cart/${cartId}`);
-    return;
-  }
+export const updateItemQuantity = (id, qty) => async (dispatch, getState) => {
+  const { cart } = getState();
+  if (!cart.cartId) return;
 
   try {
-    const existingCart = loadCartFromLocalStorage();
-    if (existingCart && existingCart.cartId) {
-      dispatch(setCart(existingCart));
-      navigate(`/cart/${existingCart.cartId}`);
-      return;
-    }
+    const updatedItems = cart.items.map(item => (item.id === id ? { ...item, qty } : item));
+    const updatedCart = { 
+      ...cart, 
+      items: updatedItems,
+      subTotal: updatedItems.reduce((sum, item) => sum + item.price * item.qty, 0),
+      tax: updatedItems.reduce((sum, item) => sum + item.price * item.qty, 0) * 0.12,
+      total: updatedItems.reduce((sum, item) => sum + item.price * item.qty, 0) * 1.12,
+    };
 
-    // Création d'un nouveau panier
-    const response = await axios.post("http://localhost:3000/carts", {
-      total: 0,
-      subTotal: 0,
-      tax: 0,
-      items: [],
-    });
-
-    const newCart = response.data;
-    dispatch(setCart(newCart));
-    localStorage.setItem("cart", JSON.stringify(newCart));
-    navigate(`/cart/${newCart.id}`);
+    const response = await axios.put(`${API_URL}/${cart.cartId}`, updatedCart);
+    dispatch(setCart(response.data));
+    saveCartToLocalStorage(response.data); 
   } catch (error) {
-    console.error("Erreur lors de la création du panier :", error);
+    console.error("Erreur lors de la mise à jour de la quantité :", error);
   }
 };
+export const removeItemFromCart = (id) => async (dispatch, getState) => {
+  const { cart } = getState();
+  if (!cart.cartId) return;
+
+  try {
+    const updatedItems = cart.items.filter(item => item.id !== id);
+    const updatedCart = { ...cart, items: updatedItems };
+
+    await axios.put(`${API_URL}/${cart.cartId}`, updatedCart);
+    dispatch(removeFromCart(id));
+  } catch (error) {
+    console.error("Erreur lors de la suppression du produit :", error);
+  }
+};
+
+
+
+
 
 export default cartSlice.reducer;

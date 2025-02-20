@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getProductsByCategory } from "../services/ProductService.jsx"; 
 import Pagination from "../components/Pagination.jsx";
-import { Link } from "react-router-dom";
 import ShopProduct from "../components/ShopProduct.jsx";
+import Title from "../components/Title.jsx";
 
 function CategoryProducts() {
   const { categoryName } = useParams();
@@ -23,15 +23,8 @@ function CategoryProducts() {
   
     <div>
       <div className="product-big-title-area">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12">
-              <div className="product-bit-title text-center">
-                <h2>{categoryName}</h2>
-              </div>
-            </div>
-          </div>
-        </div> 
+        <Title title={categoryName}/>
+         
       </div>
 
       <div className="single-product-area"> 

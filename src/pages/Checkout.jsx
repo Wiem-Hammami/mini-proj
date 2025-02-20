@@ -1,17 +1,16 @@
- function Checkout(){
+import { useSelector } from 'react-redux';
+import CartTable from '../components/CartTable';
+import Title from '../components/Title.jsx'
+import Form from '../components/Form.jsx'
+
+function Checkout(){
+  const cart = useSelector((state) => state.cart);
+
     return (
-        <>
+        
          <>
   <div className="product-big-title-area">
-    <div className="container">
-      <div className="row">
-        <div className="col-md-12">
-          <div className="product-bit-title text-center">
-            <h2>Checkout</h2>
-          </div>
-        </div>
-      </div>
-    </div>
+  <Title title="Checkout"/>
   </div>
   <div className="single-product-area">
     <div className="zigzag-bottom" />
@@ -20,15 +19,10 @@
         <div className="col-md-12">
           <div className="product-content-right">
             <div className="woocommerce">
-              <form
-                encType="multipart/form-data"
-                action="#"
-                className="checkout"
-                method="post"
-                name="checkout"
-              >
+              <form encType="multipart/form-data" action="#" className="checkout" method="post" name="checkout">
+              
                 <div id="customer_details" className="col2-set">
-                  <div className="col-6">
+                  {/* <div className="col-6">
                     <div className="woocommerce-billing-fields">
                       <h3>Billing Details</h3>
                       <p
@@ -236,8 +230,9 @@
                       </p>
                       <div className="clear" />
                     </div>
-                  </div>
-                  <div className="col-6">
+                  </div> */}
+                  <Form/>
+                  {/* <div className="col-6">
                     <div className="woocommerce-shipping-fields">
                       <h3 id="ship-to-different-address">
                         <label
@@ -440,49 +435,14 @@
                         />
                       </p>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
                 <h3 id="order_review_heading">Your order</h3>
                 <div id="order_review" style={{ position: "relative" }}>
-                  <table className="shop_table">
-                    <thead>
-                      <tr>
-                        <th className="product-name">Product</th>
-                        <th className="product-total">Total</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr className="cart_item">
-                        <td className="product-name">
-                          Ship Your Idea{" "}
-                          <strong className="product-quantity">× 1</strong>{" "}
-                        </td>
-                        <td className="product-total">
-                          <span className="amount">£15.00</span>{" "}
-                        </td>
-                      </tr>
-                    </tbody>
-                    <tfoot>
-                      <tr className="cart-subtotal">
-                        <th>Cart Subtotal</th>
-                        <td>
-                          <span className="amount">£15.00</span>
-                        </td>
-                      </tr>
-                      <tr className="shipping">
-                        <th>Taxe (20%)</th>
-                        <td>12.12 €</td>
-                      </tr>
-                      <tr className="order-total">
-                        <th>Order Total</th>
-                        <td>
-                          <strong>
-                            <span className="amount">15.00 € </span>
-                          </strong>{" "}
-                        </td>
-                      </tr>
-                    </tfoot>
-                  </table>
+                  
+                  <CartTable cart={cart}/>
+
+
                   <div id="payment">
                     <ul className="payment_methods methods">
                       <li className="payment_method_bacs">
@@ -546,7 +506,7 @@
                           />
                           <a
                             title="What is PayPal?"
-                            onclick="javascript:window.open('https://www.paypal.com/gb/webapps/mpp/paypal-popup','WIPaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1060, height=700'); return false;"
+                            onClick="javascript:window.open('https://www.paypal.com/gb/webapps/mpp/paypal-popup','WIPaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1060, height=700'); return false;"
                             className="about_paypal"
                             href="https://www.paypal.com/gb/webapps/mpp/paypal-popup"
                           >
@@ -585,7 +545,7 @@
     </div>
   </div>
 </>
-</>
+
     )
  }
  export default Checkout;

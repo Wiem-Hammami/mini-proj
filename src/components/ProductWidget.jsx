@@ -38,7 +38,7 @@ function ProductWidget({ title, showViewAllButton = true , showTitle=true}) {
         {showTitle && (
           <h2 className="product-wid-title">{title}</h2>
 
-        )}
+        )} 
         
 
         {showViewAllButton && (

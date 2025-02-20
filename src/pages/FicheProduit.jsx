@@ -69,8 +69,7 @@ function FicheProduit() {
   {/* { <OtherBrands/> } */}
  
 </div>
-              {/* <FileArane/> */}
-             
+          
             <ProductDetails product={product} />
           </div>
       </div>
