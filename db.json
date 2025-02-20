@@ -4277,106 +4277,42 @@
       ]
     },
     {
-      "id": "ca5c",
-      "total": 558,
-      "subTotal": 558,
-      "tax": 66.96,
+      "cartId": "3d6f",
       "items": [
         {
-          "id": 2001,
-          "name": "samsung a3",
-          "price": 558,
+          "id": 2002,
+          "name": "samsung a5",
+          "price": 338,
           "qty": 1,
-          "imageName": "samsung-a3.jpg"
-        }
-      ]
-    },
-    {
-      "items": [
-        {
-          "id": 4002,
-          "name": "huawei mate 10 lite.jpg",
-          "price": 300,
-          "qty": 1,
-          "imageName": "huawei-mate-10-lite.jpg"
+          "imageName": "samsung-a5.jpg"
         },
         {
-          "id": "5002",
-          "name": "sony xperia 1",
-          "price": 557,
+          "id": 3002,
+          "name": "lg g pad iii 8.0 fhd",
+          "price": 585,
           "qty": 1,
-          "imageName": "sony-xperia-1.jpg"
+          "imageName": "lg-g-pad-iii-8.0-fhd.jpg"
         }
       ],
-      "total": 857,
-      "subTotal": 857,
-      "tax": 102.84,
-      "cartId": "cb6a",
-      "id": "cb6a"
+      "total": 923,
+      "subTotal": 923,
+      "tax": 110.75999999999999,
+      "id": "3d6f"
     },
     {
+      "id": "150a",
+      "total": 351,
+      "subTotal": 351,
+      "tax": 42.12,
       "items": [
         {
-          "id": 2001,
-          "name": "samsung a3",
-          "price": 558,
+          "id": 1002,
+          "name": "apple ipad 97 2018",
+          "price": 351,
           "qty": 1,
-          "imageName": "samsung-a3.jpg"
+          "imageName": "apple-ipad-97-2018.jpg"
         }
-      ],
-      "total": 558,
-      "subTotal": 558,
-      "tax": 66.96,
-      "cartId": "d4bf",
-      "id": "d4bf"
-    },
-    {
-      "items": [
-        {
-          "id": "5003",
-          "name": "sony xperia 10",
-          "price": 452,
-          "qty": 1,
-          "imageName": "sony-xperia-10-.jpg"
-        }
-      ],
-      "total": 452,
-      "subTotal": 452,
-      "tax": 54.239999999999995,
-      "cartId": "eadb",
-      "id": "eadb"
-    },
-    {
-      "items": [
-        {
-          "id": 4002,
-          "name": "huawei mate 10 lite.jpg",
-          "price": 300,
-          "qty": 1,
-          "imageName": "huawei-mate-10-lite.jpg"
-        }
-      ],
-      "total": 300,
-      "subTotal": 300,
-      "tax": 36,
-      "cartId": "0bb4",
-      "id": "0bb4"
-    },
-    {
-      "items": [
-        {
-          "id": 5002,
-          "name": "sony xperia 1",
-          "price": 557,
-          "qty": 1,
-          "imageName": "sony-xperia-1.jpg"
-        }
-      ],
-      "total": 557,
-      "subTotal": 557,
-      "tax": 66.84,
-      "cartId": "b666",
-      "id": "b666"
+      ]
     }
   ],
   "orders": [

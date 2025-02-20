@@ -13,7 +13,7 @@ const saveCartToLocalStorage = (cart) => {
   localStorage.setItem("cart", JSON.stringify(cart));
 };
 
-const initialState = loadCartFromLocalStorage() || {
+const initialState = loadCartFromLocalStorage() || { 
   cartId: null,
   items: [],
   total: 0,
@@ -168,6 +168,7 @@ export const removeItemFromCart = (id) => async (dispatch, getState) => {
     console.error("Erreur lors de la suppression du produit :", error);
   }
 };
+
 
 
 
