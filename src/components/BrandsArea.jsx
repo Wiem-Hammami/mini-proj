@@ -7,6 +7,7 @@ function BrandsArea() {
           <div className="col-md-12">
             <div className="brand-wrapper">
               <div className="brand-list">
+                <h1> Brands Area</h1>
               
                 <img src="/img/brand1.png" alt="Brand 1" />
                 <img src="/img/brand2.png" alt="Brand 2" />
