@@ -1,19 +1,11 @@
 import { NavLink } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { getCategories } from '../services/CategoriesService'; 
+
+import { useCategories } from '../contexts/CategoryContext.jsx';  
 
 function Menu() {
-  const [categories, setCategories] = useState([]);
-  const fetchCategories = async () => {
-    const categoryNames = await getCategories();
-    setCategories(categoryNames);
-};
 
-  useEffect(() => {
-     
+const categories = useCategories();
 
-      fetchCategories();
-  }, []);
 
   return (
     <div className="mainmenu-area">

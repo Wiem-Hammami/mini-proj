@@ -17,59 +17,33 @@ export const getProductsByCategory = async (categoryName) => {
     return category && category.items ? category.items : [];
   } catch (error) {
     console.error("Erreur lors de la récupération des produits :", error);
-    return [];
+    return []; 
   }
 };
-
-export const getProducts = async (title) => {
+export const getProducts = async (title, limit = null) => {
   try {
     let url;
-    if (title === TOP_SELLERS) {
+    if (title === "Top Sellers") {
       url = API_URL_TOP_SELLERS;
-    } else if (title === TOP_NEW) {
+    } else if (title === "Top New") {
       url = API_URL_TOP_NEW;
-    } else if (title === RECENTLY_VIEWED) {
-      return getRecentlyViewedProducts(); 
-    }
-
-    if (url) {
-      const response = await fetch(url);
-      const data = await response.json();
-      return data.slice(0, 2);
-    } else {
+    }  else if (title === RECENTLY_VIEWED) {
+             return getRecentlyViewedProducts(); 
+           }else {
       console.error("Titre non valide");
       return [];
     }
+
+    const response = await fetch(url);
+    const data = await response.json();
+
+    return limit ? data.slice(0, limit) : data; 
   } catch (error) {
     console.error("Erreur lors de la récupération des produits :", error);
     return [];
   }
 };
 
-export const getAllProducts = async (title) => {
-  try {
-    let url;
-    if (title === TOP_SELLERS) {
-      url = API_URL_TOP_SELLERS;
-    } else if (title === TOP_NEW) {
-      url = API_URL_TOP_NEW;
-    } else if (title === RECENTLY_VIEWED) {
-      return getRecentlyViewedProducts(true); 
-    }
-
-    if (url) {
-      const response = await fetch(url);
-      const data = await response.json();
-      return data;
-    } else {
-      console.error("Titre non valide");
-      return [];
-    }
-  } catch (error) {
-    console.error("Erreur lors de la récupération des produits :", error);
-    return [];
-  }
-};
 
 export const getProductById = async (productId) => {
   try {
@@ -90,10 +64,10 @@ const addToRecentlyViewed = (productId) => {
   viewedProducts = viewedProducts ? JSON.parse(viewedProducts) : [];
 
   if (!viewedProducts.includes(productId)) {
-    viewedProducts.unshift(productId);
+    viewedProducts.unshift(productId); 
   }
 
-  if (viewedProducts.length > 10) {
+  if (viewedProducts.length > 10) { 
     viewedProducts.pop();
   }
 

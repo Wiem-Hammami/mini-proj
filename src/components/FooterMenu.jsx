@@ -1,18 +1,10 @@
 import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { getCategories } from '../services/CategoriesService'; 
+ 
+import {useCategories} from '../contexts/CategoryContext.jsx';
 
 function FooterMenu() {
-    const [categories, setCategories] = useState([]);
 
-    useEffect(() => {
-        const fetchCategories = async () => {
-            const categoryNames = await getCategories();
-            setCategories(categoryNames);
-        };
-
-        fetchCategories();
-    }, []);
+    const categories = useCategories();
 
     return (
         <div className="col-md-4 col-sm-6">

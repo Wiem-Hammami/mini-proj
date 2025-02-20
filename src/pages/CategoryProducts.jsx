@@ -1,7 +1,6 @@
 
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import ProductItem from "../components/ProductItem";
 import { getProductsByCategory } from "../services/ProductService.jsx"; 
 import Pagination from "../components/Pagination.jsx";
 import { Link } from "react-router-dom";
@@ -32,7 +31,7 @@ function CategoryProducts() {
               </div>
             </div>
           </div>
-        </div>
+        </div> 
       </div>
 
       <div className="single-product-area"> 
@@ -41,14 +40,8 @@ function CategoryProducts() {
             {products.map(product => (
               <div key={product.id} className="col-md-3 col-sm-6">
                 
-                <ShopProduct
-                  image={`/img/produts-img/${categoryName}/${product.imageName}`}
-                  name={product.name}
-                  category={categoryName}
-                  id={product.id}
-                  price={product.price}
-                  oldPrice={product.discountRate ? (product.price * (1 - product.discountRate / 100)).toFixed(2) : null}
-                />
+                <ShopProduct product={product} category={categoryName} />
+
                
               </div>
             ))}

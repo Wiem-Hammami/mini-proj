@@ -1,12 +1,7 @@
-//import 'bootstrap/dist/css/bootstrap.min.css'; 
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-// import slide1 from 'img/h4-slide.png';
-// import slide2 from 'img/h4-slide2.png';
-// import slide3 from 'img/h4-slide3.png';
-// import slide4 from 'img/h4-slide4.png';
-// import slide7 from 'img/h4-slide7.png';
+
 
 function SliderArea() {
   return (

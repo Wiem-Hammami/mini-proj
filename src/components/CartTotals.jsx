@@ -1,33 +1,25 @@
 
-function CartTotals(){
-    return( 
-       
-    <div className="cart_totals ">
+function CartTotals({ subtotal, tax, total }) {
+  return (
+    <div className="cart_totals">
       <h2>Cart Totals</h2>
       <table cellSpacing={0}>
         <tbody>
           <tr className="cart-subtotal">
             <th>Cart Subtotal</th>
-            <td>
-              <span className="amount">15.00 €</span>
-            </td>
+            <td>${subtotal.toFixed(2)}</td>
           </tr>
-          <tr className="shipping">
-            <th>Taxe (20%)</th>
-            <td>20.23 €</td>
+          <tr className="tax">
+            <th>Tax (20%)</th> 
+            <td>${tax.toFixed(2)}</td>
           </tr>
           <tr className="order-total">
             <th>Order Total</th>
-            <td>
-              <strong>
-                <span className="amount">15.00 €</span>
-              </strong>{" "}
-            </td>
+            <td><strong>${total.toFixed(2)}</strong></td>
           </tr>
         </tbody>
       </table>
     </div>
- 
-    )
+  );
 }
 export default CartTotals;

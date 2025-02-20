@@ -5,7 +5,8 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Cookies from "js-cookie"; 
 import ProductWidget from "../components/ProductWidget";
-
+import OtherBrands from "../components/OtherBrands"
+//import FileArane from '../components/FileAriane.jsx'
 function FicheProduit() {
     const { productId } = useParams();
     const [product, setProduct] = useState(null);
@@ -13,11 +14,11 @@ function FicheProduit() {
       const productData = await getProductById(productId);
       setProduct(productData);
   };
-  const cookies = async()=>{
+  const cookies = async()=>{ 
     let viewedProducts = Cookies.get("recentlyViewed");
     viewedProducts = viewedProducts ? JSON.parse(viewedProducts) : [];
 
-    if (!viewedProducts.includes(productId)) {
+    if (!viewedProducts.includes(productId)) { 
         viewedProducts.push(productId);
         if (viewedProducts.length > 5) {
             viewedProducts.shift(); 
@@ -62,13 +63,15 @@ function FicheProduit() {
       <li>
         <a href="">LG</a>
       </li>
-    </ul>
+    </ul> 
+     
   </div>
-  {/* <OtherBrands/> */}
+  {/* { <OtherBrands/> } */}
+ 
 </div>
-              
+              {/* <FileArane/> */}
              
-              <ProductDetails product={product} />
+            <ProductDetails product={product} />
           </div>
       </div>
   </div>

@@ -10,7 +10,7 @@ function CrossSellers(){
               height={325}
               alt="T_4_front"
               className="attachment-shop_catalog wp-post-image"
-              src="img/product-2.jpg"
+              src="/img/product-2.jpg"
             />
             <h3>Ship Your Idea</h3>
             <span className="price">
@@ -35,7 +35,7 @@ function CrossSellers(){
               height={325}
               alt="T_4_front"
               className="attachment-shop_catalog wp-post-image"
-              src="img/product-4.jpg"
+              src="/img/product-4.jpg"
             />
             <h3>Ship Your Idea</h3>
             <span className="price">
