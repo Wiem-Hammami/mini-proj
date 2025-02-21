@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { addToCart } from "../store/CartSlice";
+import { addToCart } from "../store/CartSlice.js";
 import FileAriane from "./FileAriane.jsx"
 
 function ProductDetails({ product }) {

@@ -5,6 +5,7 @@ import CategoryProducts from "../pages/CategoryProducts";
 import FicheProduit from "../pages/FicheProduit";
 import Cart from "../pages/Cart.jsx";
 import Checkout from "../pages/Checkout.jsx";
+import SearchProducts from "../pages/SearchProducts.jsx"
 
 
 const router = createBrowserRouter([
@@ -17,7 +18,8 @@ const router = createBrowserRouter([
       { path: "categories/:categoryName/ProductDetails/:productId", element: <FicheProduit /> },
       { path: "/cart", element: <Cart /> },
       { path: "/checkout", element: <Checkout /> },
-
+      { path: "/search", element: <SearchProducts /> },
+ 
     ],
   },
 ]);

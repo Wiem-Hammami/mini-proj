@@ -4275,44 +4275,6 @@
           "qty": 3
         }
       ]
-    },
-    {
-      "cartId": "3d6f",
-      "items": [
-        {
-          "id": 2002,
-          "name": "samsung a5",
-          "price": 338,
-          "qty": 1,
-          "imageName": "samsung-a5.jpg"
-        },
-        {
-          "id": 3002,
-          "name": "lg g pad iii 8.0 fhd",
-          "price": 585,
-          "qty": 1,
-          "imageName": "lg-g-pad-iii-8.0-fhd.jpg"
-        }
-      ],
-      "total": 923,
-      "subTotal": 923,
-      "tax": 110.75999999999999,
-      "id": "3d6f"
-    },
-    {
-      "id": "150a",
-      "total": 351,
-      "subTotal": 351,
-      "tax": 42.12,
-      "items": [
-        {
-          "id": 1002,
-          "name": "apple ipad 97 2018",
-          "price": 351,
-          "qty": 1,
-          "imageName": "apple-ipad-97-2018.jpg"
-        }
-      ]
     }
   ],
   "orders": [

@@ -3,12 +3,13 @@ import { Link } from "react-router-dom";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { addToCart } from "../store/CartSlice";
+import { addToCart } from "../store/CartSlice.js";
 
 function ShopProduct({ product, category }) {
   const dispatch = useDispatch();
   const navigate = useNavigate(); 
   const cartId = useSelector((state) => state.cart.cartId);
+  
 
     const handleAddToCart = async (e) => {
       e.preventDefault();
@@ -19,8 +20,9 @@ function ShopProduct({ product, category }) {
  
   if (!product) return null;
 
-  const { id, name, imageName, price, discountRate } = product;
+  const { id, name, imageName, price, discountRate } = product; 
   const oldPrice = discountRate ? (price * (1 - discountRate / 100)).toFixed(2) : null;
+  
 
   const formatCategory = (category) => {
     return category.charAt(0).toUpperCase() + category.slice(1).toLowerCase();

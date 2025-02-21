@@ -29,7 +29,7 @@ function CategoryProducts() {
 
       <div className="single-product-area"> 
         <div className="container">
-          <div className="row">
+          <div className="row"> 
             {products.map(product => (
               <div key={product.id} className="col-md-3 col-sm-6">
                 

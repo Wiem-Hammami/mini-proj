@@ -13,7 +13,7 @@ function ProductWidget({ title, showViewAllButton = true , showTitle=true}) {
       if (title === "Recently Viewed") {
         let viewedProducts = Cookies.get("recentlyViewed"); 
         viewedProducts = viewedProducts ? JSON.parse(viewedProducts) : [];
-
+ 
         if (viewedProducts.length > 0) {
           const productDetails = await Promise.all(viewedProducts.map(id => getProductById(id)));
           setProducts(showAll ? productDetails : productDetails.slice(0, 2)); 

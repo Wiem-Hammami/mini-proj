@@ -6,7 +6,6 @@ import { useParams } from "react-router-dom";
 import Cookies from "js-cookie"; 
 import ProductWidget from "../components/ProductWidget";
 import OtherBrands from "../components/OtherBrands"
-//import FileArane from '../components/FileAriane.jsx'
 function FicheProduit() {
     const { productId } = useParams();
     const [product, setProduct] = useState(null);

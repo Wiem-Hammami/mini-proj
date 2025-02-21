@@ -2,7 +2,7 @@
 import axios from "axios";
 import { createSlice } from "@reduxjs/toolkit";
 
-const API_URL = "http://localhost:3000/carts"; // URL de l'API
+const API_URL = "http://localhost:3000/carts";
 
 const loadCartFromLocalStorage = () => {
   const savedCart = localStorage.getItem("cart");
@@ -133,43 +133,49 @@ export const addToCart = (product, quantity = 1) => async (dispatch, getState) =
     }
   }
 };
+
+
 export const updateItemQuantity = (id, qty) => async (dispatch, getState) => {
   const { cart } = getState();
-  if (!cart.cartId) return;
+  const updatedItem = cart.items.find(item => item.id === id);
 
-  try {
-    const updatedItems = cart.items.map(item => (item.id === id ? { ...item, qty } : item));
-    const updatedCart = { 
-      ...cart, 
-      items: updatedItems,
-      subTotal: updatedItems.reduce((sum, item) => sum + item.price * item.qty, 0),
-      tax: updatedItems.reduce((sum, item) => sum + item.price * item.qty, 0) * 0.12,
-      total: updatedItems.reduce((sum, item) => sum + item.price * item.qty, 0) * 1.12,
+  if (updatedItem) {
+    updatedItem.qty = qty;
+    const updatedCart = {
+      ...cart,
+      items: [...cart.items], // Mettre à jour les articles avec la nouvelle quantité 
+      total: cart.total + updatedItem.price * (qty - updatedItem.qty),
+      subTotal: cart.subTotal + updatedItem.price * (qty - updatedItem.qty),
+      tax: cart.tax + updatedItem.price * (qty - updatedItem.qty) * 0.12,
     };
 
-    const response = await axios.put(`${API_URL}/${cart.cartId}`, updatedCart);
-    dispatch(setCart(response.data));
-    saveCartToLocalStorage(response.data); 
-  } catch (error) {
-    console.error("Erreur lors de la mise à jour de la quantité :", error);
+    try {
+      await axios.put(`${API_URL}/${cart.cartId}`, updatedCart);
+      dispatch(setCart(updatedCart));
+    } catch (error) {
+      console.error("Erreur lors de la mise à jour de la quantité :", error);
+    }
   }
 };
+
+
 export const removeItemFromCart = (id) => async (dispatch, getState) => {
   const { cart } = getState();
-  if (!cart.cartId) return;
+  const updatedCart = {
+    ...cart,
+    items: cart.items.filter(item => item.id !== id),
+    total: cart.items.reduce((sum, item) => sum + item.price * item.qty, 0),
+    subTotal: cart.items.reduce((sum, item) => sum + item.price * item.qty, 0),
+    tax: (cart.items.reduce((sum, item) => sum + item.price * item.qty, 0)) * 0.12,
+  };
 
   try {
-    const updatedItems = cart.items.filter(item => item.id !== id);
-    const updatedCart = { ...cart, items: updatedItems };
-
     await axios.put(`${API_URL}/${cart.cartId}`, updatedCart);
     dispatch(removeFromCart(id));
   } catch (error) {
-    console.error("Erreur lors de la suppression du produit :", error);
+    console.error("Erreur lors de la suppression de l'article :", error);
   }
 };
-
-
 
 
 
