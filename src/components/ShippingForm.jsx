@@ -144,25 +144,16 @@
 // };
 
 // export default ShipAdress;
-import { useForm } from "react-hook-form";
 import { useState } from "react";
+import { useFormContext } from "react-hook-form";
 
-const ShipAdress = ({ onShippingSubmit }) => {
-  const { register, handleSubmit, formState: { errors } } = useForm();
-  const [showForm, setShowForm] = useState(false);
 
-  const onSubmit = (data) => {
-    onShippingSubmit({
-      civility: data.shipping_country,
-      firstName: data.shipping_first_name,
-      lastName: data.shipping_last_name,
-      zipCode: data.shipping_postcode,
-      street: data.shipping_address_1,
-      companyName: data.shipping_company || "",
-      county: data.shipping_state || "",
-      city: data.shipping_city,
-    });
-  };
+const ShipAdress = () => {
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext();  const [showForm, setShowForm] = useState(false);
+
 
     return (
     <div className="col-6">
@@ -182,7 +173,7 @@ const ShipAdress = ({ onShippingSubmit }) => {
         </h3>
 
         {showForm && ( 
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <form >
             <div className="shipping_address">
               <p className="form-row form-row-wide address-field">
                 <label htmlFor="shipping_country">
@@ -216,11 +207,14 @@ const ShipAdress = ({ onShippingSubmit }) => {
                 <label htmlFor="shipping_last_name">
                   Last Name <abbr className="required" title="required">*</abbr>
                 </label>
-                <input
+                {/* <input
                   {...register("shipping_last_name", { required: true })}
                   id="shipping_last_name"
                   type="text"
-                />
+                /> */}
+                <input {...register("shippingAddress.lastName", { "Last Name is required" : false })} className="input-text" />
+
+                
                 {errors.shipping_last_name && <span>This field is required</span>}
               </p>
 

@@ -84,32 +84,37 @@
 
 // export default BillingDetails;
 
-import { useForm } from "react-hook-form";
+//import { useForm } from "react-hook-form";
+import { useFormContext } from "react-hook-form";
 
-const BillingDetails = ({ onBillingSubmit }) => {
-  const { register, handleSubmit, formState: { errors } } = useForm();
 
-  const onSubmit = (data) => {
-    onBillingSubmit({
-      civility: data.billing_country,
-      firstName: data.billing_first_name,
-      lastName: data.billing_last_name,
-      zipCode: data.billing_postcode,
-      street: data.billing_address_1,
-      companyName: data.billing_company || "",
-      county: data.billing_state || "",
-      city: data.billing_city,
-      billing_email: data.billing_email,
-      billing_phone: data.billing_phone,
-      order_comments: data.order_comments || "",
-    });
-  };
+const BillingDetails = () => {
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext(); 
+
+  // const onSubmit = (data) => {
+  //   onBillingSubmit({
+  //     civility: data.billing_country,
+  //     firstName: data.billing_first_name,
+  //     lastName: data.billing_last_name,
+  //     zipCode: data.billing_postcode,
+  //     street: data.billing_address_1,
+  //     companyName: data.billing_company || "",
+  //     county: data.billing_state || "",
+  //     city: data.billing_city,
+  //     billing_email: data.billing_email,
+  //     billing_phone: data.billing_phone,
+  //     order_comments: data.order_comments || "",
+  //   });
+  // };
 
     return (
         <div className="col-6">
           <div className="woocommerce-billing-fields">
             <h3>Billing Details</h3>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            {/* <form onSubmit={handleSubmit(onSubmit)}> */}
               <div className="form-row">
                 <label htmlFor="billing_country">
                   Civility <abbr className="required" title="required">*</abbr>
@@ -174,7 +179,7 @@ const BillingDetails = ({ onBillingSubmit }) => {
                 {errors.billing_phone && <span>This field is required and must be a valid phone number</span>}
               </div>
     
-            </form>
+            {/* </form> */}
           </div>
         </div>
       );

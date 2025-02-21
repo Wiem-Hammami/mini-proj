@@ -4277,17 +4277,17 @@
       ]
     },
     {
-      "id": "38ff",
-      "total": 401,
-      "subTotal": 401,
-      "tax": 48.12,
+      "id": "c31c",
+      "total": 338,
+      "subTotal": 338,
+      "tax": 40.559999999999995,
       "items": [
         {
-          "id": 1001,
-          "name": "apple ipad 97 2017",
-          "price": 401,
+          "id": 2002,
+          "name": "samsung a5",
+          "price": 338,
           "qty": 1,
-          "imageName": "apple-ipad-97-2017.jpg"
+          "imageName": "samsung-a5.jpg"
         }
       ]
     }
@@ -4333,41 +4333,6 @@
         }
       },
       "paymentMethod": "paypal"
-    },
-    {
-      "id": "2025-02-21T21:57:35.834Z",
-      "total": 401,
-      "subTotal": 401,
-      "tax": 48.12,
-      "items": [
-        {
-          "id": 1001,
-          "name": "apple ipad 97 2017",
-          "imageName": "apple-ipad-97-2017.jpg",
-          "price": 401,
-          "qty": 1
-        }
-      ]
-    },
-    {
-      "id": "2025-02-21T22:22:48.310Z",
-      "total": 401,
-      "subTotal": 401,
-      "tax": 48.12,
-      "items": [
-        {
-          "id": 1001,
-          "name": "apple ipad 97 2017",
-          "imageName": "apple-ipad-97-2017.jpg",
-          "price": 401,
-          "qty": 1
-        }
-      ],
-      "customer": {
-        "billingAdress": null,
-        "shippingAdress": null
-      },
-      "paymentMethod": "Paypal"
     }
   ]
 }
