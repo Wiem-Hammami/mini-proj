@@ -1,118 +1,183 @@
-import React from "react";
-import { useFormContext } from "react-hook-form";
+// import { useForm } from 'react-hook-form';
 
-export default function BillingForm() {
-  const {
-    register,
-    formState: { errors },
-  } = useFormContext(); 
+// const BillingDetails = () => {
+//   const { register, handleSubmit, formState: { errors } } = useForm();
 
-  return (
-    <div >
+//   const onSubmit = (data) => {
+//     console.log(data); 
+//   };
+
+//   return (
+//     <div className="col-6">
+//       <div className="woocommerce-billing-fields">
+//         <h3>Billing Details</h3>
+//         <form onSubmit={handleSubmit(onSubmit)}>
+//           <div className="form-row">
+//             <label htmlFor="billing_country">
+//               Civility <abbr className="required" title="required">*</abbr>
+//             </label>
+//             <select
+//               {...register("billing_country", { required: true })}
+//               id="billing_country"
+//               name="billing_country"
+//             >
+//               <option value="AX">Mr</option>
+//               <option value="AF">Mlle</option>
+//               <option value="AF">Mme</option>
+//             </select>
+//             {errors.billing_country && <span>This field is required</span>}
+//           </div>
+
+//           <div className="form-row">
+//             <label htmlFor="billing_first_name">
+//               First Name <abbr className="required" title="required">*</abbr>
+//             </label>
+//             <input
+//               {...register("billing_first_name", { required: true })}
+//               id="billing_first_name"
+//               type="text"
+//             />
+//             {errors.billing_first_name && <span>This field is required</span>}
+//           </div>
+
+//           <div className="form-row">
+//             <label htmlFor="billing_last_name">
+//               Last Name <abbr className="required" title="required">*</abbr>
+//             </label>
+//             <input
+//               {...register("billing_last_name", { required: true })}
+//               id="billing_last_name"
+//               type="text"
+//             />
+//             {errors.billing_last_name && <span>This field is required</span>}
+//           </div>
+
+//           <div className="form-row">
+//             <label htmlFor="billing_email">
+//               Email Address <abbr className="required" title="required">*</abbr>
+//             </label>
+//             <input
+//               {...register("billing_email", { required: true, pattern: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/ })}
+//               id="billing_email"
+//               type="email"
+//             />
+//             {errors.billing_email && <span>This field is required and must be a valid email</span>}
+//           </div>
+
+//           <div className="form-row">
+//             <label htmlFor="billing_phone">
+//               Phone <abbr className="required" title="required">*</abbr>
+//             </label>
+//             <input
+//               {...register("billing_phone", { required: true, pattern: /^[0-9]{10}$/ })}
+//               id="billing_phone"
+//               type="text"
+//             />
+//             {errors.billing_phone && <span>This field is required and must be a valid phone number</span>}
+//           </div>
+
+//         </form>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default BillingDetails;
+
+import { useForm } from "react-hook-form";
+
+const BillingDetails = ({ onBillingSubmit }) => {
+  const { register, handleSubmit, formState: { errors } } = useForm();
+
+  const onSubmit = (data) => {
+    onBillingSubmit({
+      civility: data.billing_country,
+      firstName: data.billing_first_name,
+      lastName: data.billing_last_name,
+      zipCode: data.billing_postcode,
+      street: data.billing_address_1,
+      companyName: data.billing_company || "",
+      county: data.billing_state || "",
+      city: data.billing_city,
+      billing_email: data.billing_email,
+      billing_phone: data.billing_phone,
+      order_comments: data.order_comments || "",
+    });
+  };
+
+    return (
+        <div className="col-6">
+          <div className="woocommerce-billing-fields">
+            <h3>Billing Details</h3>
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <div className="form-row">
+                <label htmlFor="billing_country">
+                  Civility <abbr className="required" title="required">*</abbr>
+                </label>
+                <select
+                  {...register("billing_country", { required: true })}
+                  id="billing_country"
+                  name="billing_country"
+                >
+                  <option value="AX">Mr</option>
+                  <option value="AF">Mlle</option>
+                  <option value="AF">Mme</option>
+                </select>
+                {errors.billing_country && <span>This field is required</span>}
+              </div>
     
-      {/* Civility */}
-      <p className="form-row form-row-wide">
-        <label>
-          Civility <abbr title="required" className="required">*</abbr>
-        </label>
-        <select {...register("billingAddress.civility", { required: "Civility is required" })} className="input-text">
-          <option value="">Select...</option>
-          <option value="Mr">Mr</option>
-          <option value="Mme">Mme</option>
-          <option value="Mlle">Mlle</option>
-        </select>
-        {errors.billingAddress?.civility && <p className="error">{errors.billingAddress.civility.message}</p>}
-      </p>
+              <div className="form-row">
+                <label htmlFor="billing_first_name">
+                  First Name <abbr className="required" title="required">*</abbr>
+                </label>
+                <input
+                  {...register("billing_first_name", { required: true })}
+                  id="billing_first_name"
+                  type="text"
+                />
+                {errors.billing_first_name && <span>This field is required</span>}
+              </div>
+    
+              <div className="form-row">
+                <label htmlFor="billing_last_name">
+                  Last Name <abbr className="required" title="required">*</abbr>
+                </label>
+                <input
+                  {...register("billing_last_name", { required: true })}
+                  id="billing_last_name"
+                  type="text"
+                />
+                {errors.billing_last_name && <span>This field is required</span>}
+              </div>
+    
+              <div className="form-row">
+                <label htmlFor="billing_email">
+                  Email Address <abbr className="required" title="required">*</abbr>
+                </label>
+                <input
+                  {...register("billing_email", { required: true, pattern: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/ })}
+                  id="billing_email"
+                  type="email"
+                />
+                {errors.billing_email && <span>This field is required and must be a valid email</span>}
+              </div>
+    
+              <div className="form-row">
+                <label htmlFor="billing_phone">
+                  Phone <abbr className="required" title="required">*</abbr>
+                </label>
+                <input
+                  {...register("billing_phone", { required: true, pattern: /^[0-9]{10}$/ })}
+                  id="billing_phone"
+                  type="text"
+                />
+                {errors.billing_phone && <span>This field is required and must be a valid phone number</span>}
+              </div>
+    
+            </form>
+          </div>
+        </div>
+      );
+};
 
-      {/* First Name */}
-      <p className="form-row form-row-first">
-        <label>
-          First Name <abbr title="required" className="required">*</abbr>
-        </label>
-        <input {...register("billingAddress.firstName", { required: "First Name is required" })} className="input-text" />
-        {errors.billingAddress?.firstName && <p className="error">{errors.billingAddress.firstName.message}</p>}
-      </p>
-
-      {/* Last Name */}
-      <p className="form-row form-row-last">
-        <label>
-          Last Name <abbr title="required" className="required">*</abbr>
-        </label>
-        <input {...register("billingAddress.lastName", { required: "Last Name is required" })} className="input-text" />
-        {errors.billingAddress?.lastName && <p className="error">{errors.billingAddress.lastName.message}</p>}
-      </p>
-
-      {/* Company Name (Optional) */}
-      <p className="form-row form-row-wide">
-        <label>Company Name</label>
-        <input {...register("billingAddress.companyName")} className="input-text" placeholder="Company (optional)" />
-      </p>
-
-      {/* Street Address */}
-      <p className="form-row form-row-wide">
-        <label>
-          Street Address <abbr title="required" className="required">*</abbr>
-        </label>
-        <input {...register("billingAddress.street", { required: "Street Address is required" })} className="input-text" />
-        {errors.billingAddress?.street && <p className="error">{errors.billingAddress.street.message}</p>}
-      </p>
-
-      {/* City */}
-      <p className="form-row form-row-wide">
-        <label>
-          City <abbr title="required" className="required">*</abbr>
-        </label>
-        <input {...register("billingAddress.city", { required: "City is required" })} className="input-text" />
-        {errors.billingAddress?.city && <p className="error">{errors.billingAddress.city.message}</p>}
-      </p>
-
-      {/* County */}
-      <p className="form-row form-row-wide">
-        <label>
-          County <abbr title="required" className="required">*</abbr>
-        </label>
-        <input {...register("billingAddress.county", { required: "County is required" })} className="input-text" />
-        {errors.billingAddress?.county && <p className="error">{errors.billingAddress.county.message}</p>}
-      </p>
-
-      {/* Zip Code */}
-      <p className="form-row form-row-wide">
-        <label>
-          Zip Code <abbr title="required" className="required">*</abbr>
-        </label>
-        <input {...register("billingAddress.zipCode", { required: "Zip Code is required" })} className="input-text" />
-        {errors.billingAddress?.zipCode && <p className="error">{errors.billingAddress.zipCode.message}</p>}
-      </p>
-
-      {/* Email */}
-      <p className="form-row form-row-wide">
-        <label>
-          Email <abbr title="required" className="required">*</abbr>
-        </label>
-        <input
-          {...register("customer.email", {
-            required: "Email is required",
-            pattern: { value: /^\S+@\S+\.\S+$/, message: "Invalid email address" },
-          })}
-          className="input-text"
-        />
-        {errors.customer?.email && <p className="error">{errors.customer.email.message}</p>}
-      </p>
-
-      {/* Phone */}
-      <p className="form-row form-row-wide">
-        <label>
-          Phone <abbr title="required" className="required">*</abbr>
-        </label>
-        <input
-          {...register("customer.phone", {
-            required: "Phone number is required",
-            pattern: { value: /^[0-9]+$/, message: "Only numbers allowed" },
-          })}
-          className="input-text"
-        />
-        {errors.customer?.phone && <p className="error">{errors.customer.phone.message}</p>}
-      </p>
-    </div>
-  );
-}
+export default BillingDetails;
