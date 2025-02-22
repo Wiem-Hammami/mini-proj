@@ -1,7 +1,7 @@
 function OtherBrands(){
     return (
-        <div classname="single-sidebar">
-  <h2 classname="sidebar-title">Others brands</h2>
+        <div className="single-sidebar">
+  <h2 className="sidebar-title">Others brands</h2>
   <ul>
     <li>
       <a href="">Sony</a>

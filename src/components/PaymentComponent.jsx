@@ -114,7 +114,6 @@ export default function PaymentComponent() {
           )}
         </li>
 
-        {/* Cheque Payment */}
         <li className="payment_method_cheque">
           <input {...register("paymentMethod")} type="radio" value="cheque" id="payment_method_cheque" className="input-radio" />
           <label htmlFor="payment_method_cheque">Cheque Payment</label>
@@ -125,7 +124,6 @@ export default function PaymentComponent() {
           )}
         </li>
 
-        {/* PayPal */}
         <li className="payment_method_paypal">
           <input {...register("paymentMethod")} type="radio" value="paypal" id="payment_method_paypal" className="input-radio" />
           <label htmlFor="payment_method_paypal">
@@ -147,7 +145,6 @@ export default function PaymentComponent() {
         </li>
       </ul>
 
-      {/* Validation Error Message */}
       <p className="error">{errors.paymentMethod?.message}</p>
     </div>
   );

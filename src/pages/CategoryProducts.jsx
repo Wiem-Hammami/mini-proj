@@ -20,7 +20,7 @@ function CategoryProducts() {
   }, [categoryName]);
 
   return (
-  
+   
     <div>
       <div className="product-big-title-area">
         <Title title={categoryName}/>
