@@ -122,12 +122,7 @@ function Checkout  () {
                     <CartTable cart={cart} />
                     <PaymentComponent />
                     <div className="form-row place-order">
-                      {/* <input
-                        className="button alt"
-                        type="button"
-                        value="Place order"
-                        onClick={handlePlaceOrder} 
-                      /> */}
+                     
                       <button type="submit" className="button alt">
                         Place Order
                       </button>

@@ -65,7 +65,6 @@ function FicheProduit() {
     </ul> 
      
   </div>
-  {/* { <OtherBrands/> } */}
  
 </div>
           
